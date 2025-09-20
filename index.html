@@ -378,6 +378,16 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script>
+				document.querySelectorAll('a[href]').forEach(function(link) {
+					const href = link.getAttribute('href');
+					// Absolute URLs not containing the current hostname are considered external
+					if (/^https?:\/\//.test(href) && !href.includes(window.location.hostname)) {
+						link.setAttribute('target', '_blank');
+						link.setAttribute('rel', 'noopener noreferrer');
+					}
+				});
+			</script>
 
 	</body>
 </html>
